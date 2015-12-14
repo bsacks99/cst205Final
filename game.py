@@ -16,7 +16,7 @@ def playerName(player):
   player.setName(username)
   showInformation("Hello " + player.getName() + ".")
 
-#to access player name, newName['name']
+
 
 """ Rooms """
 
@@ -454,21 +454,21 @@ def tunnel2_exit(player, map):
   
   while choice.lower() not in ['fight', 'run']:
     choice = requestString("Please enter a valid response: ")
-    if choice == 'fight':
-      printNow("You have:")
-      player.listItems()
-      choice = requestString("Pick an item by name to use as a weapon.")
-      if not player.hasItem(choice.lower()):
-        printNow("You don't have that item. It's now to late to find another, you will have to fight bare handed")
+  if choice == 'fight':
+    printNow("You have:")
+    player.listItems()
+    choice = requestString("Pick an item by name to use as a weapon.")
+    if not player.hasItem(choice.lower()):
+      printNow("You don't have that item. It's now to late to find another, you will have to fight bare handed")
         
         # call fight control
-        fightControl(player, 0, 'Zombie', 35)
+      fightControl(player, 0, 'Zombie', 35)
         
-      else:
-        item = player.useItem(choice.lower())
+    else:
+      item = player.useItem(choice.lower())
         
         # call fight control
-        fightControl(player, item.getStrength(), 'Zombie', 35)
+      fightControl(player, item.getStrength(), 'Zombie', 35)
           
       if player.getHealth() < 1:
         sys.exit("Sorry, " + player.getName() + " you lose!")
@@ -480,8 +480,8 @@ def tunnel2_exit(player, map):
         #erase player at exit 
         addOvalFilled(map, 235, 35, 5, 5, white)
         goDirection(player, 'tunnel2_exit', validChoices, direction, map)
-    else:
-      sys.exit("The Zombie is too fast, he runs you down and kills you. Sorry " + player.getName() + " you lose!")
+  else:
+    sys.exit("The Zombie is too fast, he runs you down and kills you. Sorry " + player.getName() + " you lose!")
 
 
 """function goDirection keeps track of the player allowed directions and checks their validity 

@@ -256,7 +256,8 @@ def secret_tomb(player, map):
         fightControl(player, item.getStrength(), 'Mummy', 25)
           
       if player.getHealth() < 1:
-        sys.exit("Sorry, " + player.getName() + " you lose!")
+        showError("Sorry, " + player.getName() + " you lose!")
+        sys.exit(0)
       else: 
         player.addHistory("killed_mummy")
         printNow("You have killed the mummy! Good job!") 
@@ -264,7 +265,8 @@ def secret_tomb(player, map):
         direction = requestString("Which direction would you like to go: ")
         goDirection(player, 'secret_tomb', validChoices, direction, map)
     else:
-      sys.exit("The Mummy is fast, he runs you down and kills you. Sorry " + player.getName() + " you lose!")
+      showError("The Mummy is fast, he runs you down and kills you. Sorry " + player.getName() + " you lose!")
+      sys.exit(0)
   
   
 def room2(player, map):
@@ -471,7 +473,8 @@ def tunnel2_exit(player, map):
       fightControl(player, item.getStrength(), 'Zombie', 35)
         
     if player.getHealth() < 1:
-      sys.exit("Sorry, " + player.getName() + " you lose!")
+      showError("Sorry, " + player.getName() + " you lose!")
+      sys.exit(0)
     else: 
       player.addHistory("killed_zombie")
       printNow("You have killed the zombie! Good job!") 
@@ -481,7 +484,8 @@ def tunnel2_exit(player, map):
       addOvalFilled(map, 235, 35, 5, 5, white)
       goDirection(player, 'tunnel2_exit', validChoices, direction, map)
   else:
-    sys.exit("The Zombie is too fast, he runs you down and kills you. Sorry " + player.getName() + " you lose!")
+    showError("The Zombie is too fast, he runs you down and kills you. Sorry " + player.getName() + " you lose!")
+    sys.exit(0)
 
 
 """function goDirection keeps track of the player allowed directions and checks their validity 
@@ -500,7 +504,8 @@ def goDirection(player, roomName, validChoices, playerChoice, map):
     welcome()
     
   if playerChoice.lower() == "exit":  
-    sys.exit("Goodbye. Thank you for playing.")
+    showInformation("Goodbye. Thank you for playing.")
+    sys.exit(0)
       
   if roomName == 'start':
     if playerChoice.lower() == "north":
@@ -759,7 +764,7 @@ def doorGame(player, map):
   printNow("\n You approach the passage way, when suddenly a rolling grey fog begins to form in front of the opening.")
   printNow("The fog starts to cluster and take the form of a old, weathered woman. Through the fog, her face takes")
   printNow("form. Her eyes are black, void of any light. Suddenly she speaks. Her voice is soft and chilling... 'Foolish mortal, it appears you have")
-  Heart_Beatsound_reg()
+  #Heart_Beatsound_reg()
   printNow("fallen into my trap....' You begin to feel your own heart begin to beat out of your chest. 'You look")
   printNow("frightened.... good! But there is hope for you see... just answer my question and you can go free...")
   printNow("'And because I am so generous I will even help you! You can guess letters to the answer and I will tell")
@@ -785,7 +790,8 @@ def doorGame(player, map):
      elif guessedLetter not in possibleLetters:
        printNow("You begin to lose your concentration. That's not a letter")
      elif wrongAnswers >= 5:
-       sys.exit("The spirit laughs...Suddenly the floor opens and drops you to your death... SORRY " + player.getName() + " YOU LOSE!")
+       showError("The spirit laughs...Suddenly the floor opens and drops you to your death... SORRY " + player.getName() + " YOU LOSE!")
+       sys.exit(0)
      else:
        printNow("You guessed: " + guessedLetter)
        guessedLetters = guessedLetter + guessedLetters

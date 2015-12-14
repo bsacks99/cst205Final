@@ -63,7 +63,7 @@ def entry(player, map):
   
   validChoices = ['north', 'west']
   key = Item('key', 'unlock', 0)
-  torch = Item('torch', 'light', 0)
+  torch = Item('torch', 'light', 50)
   addLine(map, 180, 485, 210, 485, black)
   addLine(map, 265, 485, 295, 485, black)
   addLine(map, 180, 450, 180, 485, black)
@@ -243,14 +243,14 @@ def secret_tomb(player, map):
       printNow("You have:")
       player.listItems()
       choice = requestString("Pick an item by name to use as a weapon.")
-      if not player.hasItem(response.lower()):
+      if not player.hasItem(choice.lower()):
         printNow("You don't have that item. It's now to late to find another, you will have to fight bare handed")
         
         # call fight control
         fightControl(player, 0, 'Mummy', 25)
         
       else:
-        item = player.useItem(response.lower())
+        item = player.useItem(choice.lower())
         
         # call fight control
         fightControl(player, item.getStrength(), 'Mummy', 25)
@@ -454,18 +454,18 @@ def tunnel2_exit(player, map):
   
   while choice.lower() not in ['fight', 'run']:
     choice = requestString("Please enter a valid response: ")
-    if response == 'fight':
+    if choice == 'fight':
       printNow("You have:")
       player.listItems()
-      response = requestString("Pick an item by name to use as a weapon.")
-      if not player.hasItem(response.lower()):
+      choice = requestString("Pick an item by name to use as a weapon.")
+      if not player.hasItem(choice.lower()):
         printNow("You don't have that item. It's now to late to find another, you will have to fight bare handed")
         
         # call fight control
         fightControl(player, 0, 'Zombie', 35)
         
       else:
-        item = player.useItem(response.lower())
+        item = player.useItem(choice.lower())
         
         # call fight control
         fightControl(player, item.getStrength(), 'Zombie', 35)

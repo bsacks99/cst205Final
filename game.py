@@ -284,7 +284,7 @@ def room2(player, map):
   #erase player in room2
   addOvalFilled(map, 340, 340, 5, 5, white)
   direction = requestString("Which direction would you like to go: ")
-  goDirection(player, 'room3', validChoices, direction, map)
+  goDirection(player, 'room2', validChoices, direction, map)
   
 
 

@@ -367,7 +367,7 @@ def passage_way(player, map):
   direction = requestString("Which direction would you like to go: ")
   goDirection(player, 'passage_way', validChoices, direction, map)
            
-def tunnel2_west():
+def tunnel2_west(player, map):
   validChoices = ['south', 'north']  
   addLine(map, 340, 15, 340, 150, black)
   addLine(map, 310, 50, 310, 150, black)
@@ -392,7 +392,7 @@ def tunnel2_west():
   direction = requestString("Which direction would you like to go: ")
   goDirection(player, 'tunnel2_west', validChoices, direction, map)
   
-def tunnel2_east():
+def tunnel2_east(player, map):
   validChoices = ['south', 'north']  
   addLine(map, 340, 15, 340, 150, black)
   addLine(map, 310, 50, 310, 150, black)
@@ -417,7 +417,7 @@ def tunnel2_east():
   direction = requestString("Which direction would you like to go: ")
   goDirection(player, 'tunnel2_east', validChoices, direction, map)
   
-def tunnel2_exit():
+def tunnel2_exit(player, map):
   validChoices = ['north'] 
   #draw exit w/ doors
   addLine(map, 210, 15, 210, 0, black)

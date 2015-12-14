@@ -101,6 +101,8 @@ def entry(player, map):
     if choice.lower() == "yes":
       player.pickUp(key)
       printNow("You have picked up the key.")
+      printNow("You have:")
+      player.listItems()
     elif choice.lower() == "no":
       printNow("Okay.")
   
@@ -237,10 +239,10 @@ def secret_tomb(player, map):
     choice = requestString("Do you want to fight or run? Type fight or run")
     while choice.lower() not in ['fight', 'run']:
       choice = requestString("Please enter a valid response: ")
-    if response == 'fight':
+    if choice == 'fight':
       printNow("You have:")
       player.listItems()
-      response = requestString("Pick an item by name to use as a weapon.")
+      choice = requestString("Pick an item by name to use as a weapon.")
       if not player.hasItem(response.lower()):
         printNow("You don't have that item. It's now to late to find another, you will have to fight bare handed")
         
@@ -548,7 +550,7 @@ def goDirection(player, roomName, validChoices, playerChoice, map):
         while choice.lower() != "yes" and choice.lower() != "no":
           choice = requestString("Please enter a valid response: ")
         if choice.lower() == 'yes':
-          if player.useItem('key') == 'unlock':
+          if player.useItem('key').getAction() == 'unlock':
             printNow("You have opened the door to a secret tomb.")
             #erase player at entry of secret tomb
             addOvalFilled(map, 100, 410, 5, 5, white)

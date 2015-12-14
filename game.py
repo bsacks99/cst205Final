@@ -48,8 +48,8 @@ def start(player=None):
   
   #draw
   show(map)
-  printNow("While exploring an underground crypt, you find a mysterious door.")
-  printNow("Suddenly the ground trembles and there is a cave-in behind you. Your lungs fill with dust and sand, it is hard to breathe.")
+  printNow("\nWhile exploring an underground crypt in Rome, you find a mysterious door. There is a plaque above the door that reads ‘Te mors expectet’.")
+  printNow("Suddenly the ground trembles and there is a cave-in behind you. Your lungs fill with rocks and dirt, it is hard to breathe.")
   printNow("Finally the cave-in ends, you look back and see nothing but rocks piled up to the ceiling and only a small space around you.")
   printNow("The mysterious door is now your only hope for survival, you must go north through the door.")
   direction = requestString("Which direction would you like to go: ")
@@ -78,35 +78,36 @@ def entry(player, map):
   addOvalFilled(map, 236, 460, 5, 5, black)
   repaint(map)
   #creakingDoor()
-  printNow("You are now in the entryway of a dark tunnel, you hear the door slam behind you, the only hope for survival lies ahead.")
+  printNow("\nYou are now in the entryway of a dark tunnel, you hear the door slam behind you, the only hope for survival lies ahead.")
   
   if not player.hasItem('torch'):
     printNow("You feel around the dark entryway with your hands, you find a torch on the wall.")
     printNow("You are very happy that you have a box of matches in your pocket")
-    choice = requestString("Would you like to take and light the torch? Type yes or no")
+    choice = requestString("Would you like to take and light the torch? Type yes or no.")
     while choice.lower() not in ['yes', 'no']:
-      choice = requestString("Please enter a valid response: ")
+      choice = requestString("Please enter a valid response. Would you like to take and light the torch? Type yes or no.")
     if choice.lower() == "yes":
       player.pickUp(torch)
-      printNow("You have picked up and lit the torch.")
+      printNow("\nYou have picked up and lit the torch.")
     elif choice.lower() == "no":
-      printNow("Okay. But you may regret it.")
+      printNow("\nOkay, but you may regret it.")
      
   if not player.hasItem('key') and player.hasItem('torch'):
-    printNow("Something shiny on the dust covered floor catches your eye.")
-    printNow("It is a large golden key.")
-    choice = requestString("Would you like to pick up the key? Type yes or no")
+    printNow("\nSomething shiny on the dust covered floor catches your eye.")
+    printNow("It is a large golden key with an engraving.")
+    printNow("It reads 'Cavete ab omni quae sunt in priora'")   #Latin for Beware of what is ahead.
+    choice = requestString("Would you like to pick up the key? Type yes or no.")
     while choice.lower() not in ['yes', 'no']:
-      choice = requestString("Please enter a valid response: ")
+      choice = requestString("Please enter a valid response:\n Would you like to pick up the key? Type yes or no.")
     if choice.lower() == "yes":
       player.pickUp(key)
-      printNow("You have picked up the key.")
+      printNow("\nYou have picked up the key.")
       printNow("You have:")
       player.listItems()
     elif choice.lower() == "no":
-      printNow("Okay.")
+      printNow("\nOkay.")
   
-  printNow("You may go north further into the tunnel, or go west into the first room.")
+  printNow("\nYou may go north further into the tunnel, or go west into the first room.")
   
   
   #erase player entry
@@ -122,7 +123,7 @@ def tunnel1_front(player, map):
   repaint(map)
   #Wind1()
   #Mummy_low()
-  printNow("You are now further into the dark tunnel you feel an ominous cold wind touch your skin.")
+  printNow("\nYou are now further into the dark tunnel you feel an ominous cold wind touch your skin.")
   printNow("You smell the stench of dead bodies, you hear the sound of howling wind, and the groans of some sort of creature.")
   printNow("You may go south to retreat, north further into the tunnel, or go east into another room.")
   
@@ -138,7 +139,7 @@ def tunnel1_middle(player, map):
   addOvalFilled(map, 236, 275, 5, 5, black)
   repaint(map)
   #Wind2()
-  printNow("Going further into the tunnel the wind gets colder, the cold runs through you, you can feel down to your bones.")
+  printNow("\nGoing further into the tunnel the wind gets colder, the cold runs through you, you can feel down to your bones.")
   printNow("You may go south to retreat, go north further into the tunnel, or go west into a room.")
   
   #erase player middle tunnel1
@@ -153,8 +154,8 @@ def tunnel1_end(player, map):
   addOvalFilled(map, 236, 165, 5, 5, black)
   repaint(map)
   #Monster()
-  printNow("You have reached a dead end, you are freezing cold, and you hear a loud awful terrifying moan.")
-  printNow("You may go south back into the tunnel, or go east into a dark room.")
+  printNow("\nYou have reached a dead end, you are freezing cold, and you hear a loud awful terrifying moan.")
+  printNow("You may go south back into the tunnel, or go east into a dark room.") 
   
   #erase player end tunnel1
   addOvalFilled(map, 236, 165, 5, 5, white)
@@ -180,7 +181,8 @@ def room1(player, map):
    
   #setup an "Item", 
   sword = Item('sword', 'weapon', 80)
-
+  printNow( "\nYou walk twoards the chamber. There is a plaque above the arched")
+  printNow(" doorway which reads 'locus lacrimarum'.")                                #Latin for room of tears
   printNow("As you enter the chamber, you stumble on a hole in the floor.")
   printNow("You fall and land in a puddle of putrid water.")
   printNow("Your torch is extinguished and you are now wet, cold and smell like a corpse.")
@@ -199,14 +201,14 @@ def room1(player, map):
   
     choice = requestString("Would you like to pick up the sword? Type yes or no")
     while choice.lower() not in ['yes', 'no']:
-      choice = requestString("Please enter a valid response: ")
+      choice = requestString("Please enter a valid response: Would you like to pick up the sword? ")
     if choice.lower() == "yes":
       player.pickUp(sword)
-      printNow("You have picked up the sword.")
+      printNow("\nYou have picked up the sword.")
     elif choice.lower() == "no":
-      printNow("Okay. But you might regret it later.")
+      printNow("\nOkay. But you might regret it later.")
   
-  printNow("You see a door next to the suit of armor.")
+  printNow("\nYou see a door next to the suit of armor.")
   printNow("You may go north to the door, or go east to return to the tunnel.")
  
   #erase player in room1
@@ -220,6 +222,8 @@ def room1(player, map):
 def secret_tomb(player, map):
   validChoices = ['north', 'south']  
   #Mummy_low()
+  printNow("\nYou begin to walk twoards the dark tomb. There is a plaque above the")
+  printNow("which reads 'Locum unrested'")    #Room of the unrested 
   printNow("You step inside the dark tomb and immediately hear a loud groan.")
     
   #draw secret tomb
@@ -236,15 +240,15 @@ def secret_tomb(player, map):
   if not player.inHistory('killed_mummy'):
     printNow("Suddenly a Mummy appears. Its threads hang about its body in tatters.")
     printNow("You realize that it will kill you if you don't do something quickly.")
-    choice = requestString("Do you want to fight or run? Type fight or run")
+    choice = requestString("Do you want to fight or run? Type fight or run.")
     while choice.lower() not in ['fight', 'run']:
-      choice = requestString("Please enter a valid response: ")
+      choice = requestString("Please enter a valid response: /nDo you want to fight or run? Type fight or run.")
     if choice == 'fight':
-      printNow("You have:")
+      printNow("\nYou have:")
       player.listItems()
       choice = requestString("Pick an item by name to use as a weapon.")
       if not player.hasItem(choice.lower()):
-        printNow("You don't have that item. It's now to late to find another, you will have to fight bare handed")
+        printNow("\nYou don't have that item. It's now to late to find another, you will have to fight bare handed")
         
         # call fight control
         fightControl(player, 0, 'Mummy', 25)
@@ -256,16 +260,16 @@ def secret_tomb(player, map):
         fightControl(player, item.getStrength(), 'Mummy', 25)
           
       if player.getHealth() < 1:
-        showError("Sorry, " + player.getName() + " you lose!")
+        showError("\nSorry, " + player.getName() + " you lose!")
         sys.exit(0)
       else: 
         player.addHistory("killed_mummy")
         printNow("You have killed the mummy! Good job!") 
-        printNow("You may continue north and exit the secret tomb, or south to return.")
+        printNow("\nYou may continue north and exit the secret tomb, or south to return.")
         direction = requestString("Which direction would you like to go: ")
         goDirection(player, 'secret_tomb', validChoices, direction, map)
     else:
-      showError("The Mummy is fast, he runs you down and kills you. Sorry " + player.getName() + " you lose!")
+      showError("The Mummy is fast, he runs you down and kills you. \nSorry " + player.getName() + " you lose!")
       sys.exit(0)
   
   
@@ -278,7 +282,8 @@ def room2(player, map):
   #draw player in room2
   addOvalFilled(map, 340, 340, 5, 5, black)
   repaint(map)
-  printNow("You have entered a dark musty chamber about the size of a childs bedroom.")
+  printNow ("You step through the stone archway which reads 'Oblitus locus'") #The forgotten room
+  printNow("\nYou have entered a dark musty chamber about the size of a childs bedroom.")
   printNow("The air is heavy and smells of rotten flesh.")
   printNow("You hear small creatures rustling around and the sound of water dripping.")
   printNow ("You have discovered a small opening in the wall. It seems to lead to some sort of passage way.")
@@ -303,8 +308,9 @@ def room3(player, map):
   addOvalFilled(map, 340, 170, 5, 5, black)
   repaint(map)
   
-  printNow ("You have entered into a large dome shaped catacomb. It is cold, hummid, and dusty.")
+  printNow ("\nYou have entered into a large dome shaped catacomb. It is cold, hummid, and dusty.")
   printNow ("There does not seem to be anything in room other then large cloumbs of skulls stacked on both the right and left of you.")
+  printNow ("There is a plaque which reads 'firmamentum'") #The dome
   printNow ("You have descovered a small opening in the wall. It seems to lead to another tunnel.")
   printNow("You may go north into the newly discovered tunnel or west back into the main tunnel.")
   #erase player in room3
@@ -332,11 +338,11 @@ def room4(player, map):
   addOvalFilled(map, 100, 255, 5, 5, black)
   repaint(map)
     
-  printNow ("You have entered into a small stuffy catacomb. It is dark and cold.")
+  printNow ("\nYou have entered into a small stuffy catacomb. It is dark and cold.")
   printNow ("It is small and crampped. The ceiling is low and there is not much ")
   printNow ("room to move around. To the west side of the room, there is nothing")
   printNow ("but a bunch of old stacked bones.... There is also an old stone carving")
-  printNow ("which says 'TU VAS MOURIR'.") #This means you will die in french. Is this a french catacomb? lol. I didnt know...
+  printNow ("which says 'Et in cubiculum genetricis exanimes'.") #The room of the breathless
   printNow ("You have descovered a small opening in the wall. It seems to lead to another tunnel.")
   printNow("You may go north into the newly discovered tunnel or east back into the main tunnel.")
   
@@ -358,7 +364,7 @@ def passage_way(player, map):
   addOvalFilled(map, 390, 260, 5, 5, black)
   repaint(map)
   
-  printNow ("You begin to crawl inside. Bones snap and crack underneath your")
+  printNow ("\nYou begin to crawl inside. Bones snap and crack underneath your")
   printNow ("hands and knees. The shards of broken bone push threw the surface of your skin.")
   printNow ("You feel a hudge wave of anxiety, filling you stomach with an empty pit.")
   printNow ("Your heart begins to race. You have reached half way in the tunnel and see an opening at the other end.")
@@ -385,7 +391,7 @@ def tunnel2_west(player, map):
   addOvalFilled(map, 100, 130, 5, 5, black)
   repaint(map)
   
-  printNow("You have entered a large arched tunnel, it is dry in here.")
+  printNow("\nYou have entered a large arched tunnel which reads 'Cubiculum lucidum'. It is dry in here.")  #room of light
   printNow("You can see a small amount of light ahead, you let out a huge sigh of relief.")
   printNow("Finally you may have found the way out, but your relief is broken by a loud groan.")
   printNow("You can't imagine what lies ahead and what made that groan.")
@@ -410,7 +416,7 @@ def tunnel2_east(player, map):
   addOvalFilled(map, 325, 100, 5, 5, black)
   repaint(map)
   
-  printNow("You have entered a large arched tunnel, it is dry in here.")
+  printNow("\nYou have entered a large arched tunnel which reads 'Cubiculum lucidum'. It is dry in here.") #room of light
   printNow("You can see a small amount of light ahead, you let out a huge sigh of relief.")
   printNow("Finally you may have found the way out, but your relief is broken by a loud groan.")
   printNow("You can't imagine what lies ahead and what made that groan.")
@@ -455,9 +461,9 @@ def tunnel2_exit(player, map):
   choice = requestString("Did you come all this way to fail now, will you fight the zombie or run? : Type fight or run")
   
   while choice.lower() not in ['fight', 'run']:
-    choice = requestString("Please enter a valid response: ")
+    choice = requestString("Please enter a valid response: choose to 'fight' or 'run' ")
   if choice.lower() == 'fight':
-    printNow("You have:")
+    printNow("\nYou have:")
     player.listItems()
     choice = requestString("Pick an item by name to use as a weapon.")
     if not player.hasItem(choice.lower()):
@@ -477,7 +483,7 @@ def tunnel2_exit(player, map):
       sys.exit(0)
     else: 
       player.addHistory("killed_zombie")
-      printNow("You have killed the zombie! Good job!") 
+      printNow("\nYou have killed the zombie! Good job!") 
       printNow("You may continue north and exit the catacombs.")
       direction = requestString("Which direction would you like to go: ")
       #erase player at exit 
@@ -553,20 +559,20 @@ def goDirection(player, roomName, validChoices, playerChoice, map):
       if player.hasItem('key'):
         choice = requestString("Would you like to use the key? Type yes or no: ")
         while choice.lower() != "yes" and choice.lower() != "no":
-          choice = requestString("Please enter a valid response: ")
+          choice = requestString("Please enter a valid response: 'yes' or 'no' ")
         if choice.lower() == 'yes':
           if player.useItem('key').getAction() == 'unlock':
-            printNow("You have opened the door to a secret tomb.")
+            printNow("\nYou have opened the door to a secret tomb.")
             #erase player at entry of secret tomb
             addOvalFilled(map, 100, 410, 5, 5, white)
             secret_tomb(player, map)
         elif choice.lower() == 'no':
-          printNow("Okay, returning to room.")
+          printNow("\nOkay, returning to room.")
           #erase player at entry of secret tomb
           addOvalFilled(map, 100, 410, 5, 5, white)
           room1(player, map)
       else:
-        printNow("You do not have the key.")
+        printNow("\nYou do not have the key.")
         printNow("Returning to the room.")
         #erase player at entry of secret tomb
         addOvalFilled(map, 100, 410, 5, 5, white)
@@ -623,7 +629,8 @@ def goDirection(player, roomName, validChoices, playerChoice, map):
         addOvalFilled(map, 235, 5, 5, 5, black)
         repaint(map)
         #creakingDoor()
-        showInformation("Congratulations, " + player.getName() + " you have WON!!!")
+        showInformation("Congratulations, " + player.getName() + " you have WON!!!") 
+        sys.exit(o)
      
    
  #Passage way choices here
@@ -751,8 +758,8 @@ class Player:
          
 def doorGame(player, map):
 #mini Game to open passageway function
-                     
-  hiddenWord = "matchstick"                                      #Secret Word: Can be changed to anything you like and will still work!
+                    
+  hiddenWord = "oblituslocus"                                    #Secret Word: 
   wordDashes = "?" * len(hiddenWord)                             #Display dashes for secret word                                       
   guessedLetters = ""                                            #holds on to the guessed letters 
   correctLetters = 0                                             #correct letters incriminator 
@@ -770,7 +777,7 @@ def doorGame(player, map):
   printNow("'And because I am so generous I will even help you! You can guess letters to the answer and I will tell")
   printNow("you if your getting close.....")
   printNow("However, if you guess more than five letter incorrectly..... well.... ha ha ha....'")
-  printNow("\n 'Ready? Tear one off and scratch my head what was red is black instead! WHAT AM I!'")
+  printNow("\n 'Ready? What is the name of the room you have just entered!?!'")
   printNow(wordDashes) 
   quiteGame  = false                                        #Displays the proper - of hiddenWord
 
@@ -782,15 +789,15 @@ def doorGame(player, map):
      if guessedLetter == "quit":
        quitGame = true
      if len(guessedLetter) != 1:
-       printNow("Stupid mortal, ha! That is too many letters....")
+       printNow("\nStupid mortal, ha! That is too many letters....")
        printNow("I won't count this one against you!")
      elif guessedLetter in guessedLetters:
-       printNow("Stupid mortal, ha! You have already guessed that letter....")
+       printNow("\nStupid mortal, ha! You have already guessed that letter....")
        printNow("I won't count this one against you!")
      elif guessedLetter not in possibleLetters:
-       printNow("You begin to lose your concentration. That's not a letter")
+       printNow("\nYou begin to lose your concentration. That's not a letter")
      elif wrongAnswers >= 5:
-       showError("The spirit laughs...Suddenly the floor opens and drops you to your death... SORRY " + player.getName() + " YOU LOSE!")
+       showError("\n\nThe spirit laughs...Suddenly the floor opens and drops you to your death... SORRY " + player.getName() + " YOU LOSE!")
        sys.exit(0)
      else:
        printNow("You guessed: " + guessedLetter)
@@ -812,14 +819,13 @@ def doorGame(player, map):
        else:
            wrongAnswers = wrongAnswers + 1
            printNow("'HAHAHAHAHA! That's wrong!'")
-           printNow ("'The question is... Tear one off and scratch my head what was red is black instead! WHAT AM I!'")
+           printNow ("'The question is... What is the name of the room you are in!?!'\n")
            printNow(wordDashes)   
                       
      #Winning statement: 
      if correctLetters== len(hiddenWord):
        printNow("Suddenly the spirit screams! \n 'AHHHHHH!' \n Then disappears, leaving the room like it once was before.")
        printNow("The correct answer was:  " + hiddenWord)
-       printNow("You place a burning match in the skulls mouth, and")
        printNow("The catacomb wall begins to shake...")
        printNow("You are now allowed into the passage way....")
        passage_way(player, map)
@@ -833,7 +839,6 @@ def creakingDoor():
       value  = getSampleValue(sample)
       setSampleValue(sample, value * 6 )
    play(sound)
-
 def Wind1():
    file = "cst205Final/sounds/wind.wav" 
    sound = makeSound(file)
@@ -841,7 +846,6 @@ def Wind1():
       value  = getSampleValue(sample)
       setSampleValue(sample, value * 8 )
    play(sound)
-
 def Wind2():
    file = "cst205Final/sounds/wind2.wav" 
    sound = makeSound(file)
@@ -849,7 +853,6 @@ def Wind2():
      value  = getSampleValue(sample)
      setSampleValue(sample, value * 8 )
    play(sound)
-
 def Mummy_low():
   file = "cst205Final/sounds/Mummy.wav" 
   sound = makeSound(file)
@@ -857,7 +860,6 @@ def Mummy_low():
      value  = getSampleValue(sample)
      setSampleValue(sample, value *0.1 )
   play(sound)
-
 def Monster():
   file = "cst205Final/sounds/Monster.wav"
   sound = makeSound(file)
@@ -865,7 +867,6 @@ def Monster():
      value  = getSampleValue(sample)
      setSampleValue(sample, value)
   play(sound)
-
 def zombie_L3():
   file = "cst205Final/sounds/I Want Brains.wav"
   sound = makeSound(file)
@@ -882,3 +883,4 @@ def Heart_Beatsound_reg(): #heart beat sound
      setSampleValue(sample, value * 20)
   play(sound)
 """
+        

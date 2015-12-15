@@ -641,7 +641,7 @@ def goDirection(player, roomName, validChoices, playerChoice, map):
         addOvalFilled(map, 235, 5, 5, 5, black)
         repaint(map)
         creakingDoor(player)
-        
+        TunnelExit(player)
         showInformation("Congratulations, " + player.getName() + " you have WON!!!") 
         sys.exit(o)
      
@@ -920,8 +920,7 @@ def Heart_Beatsound_reg(player):
   
 def Hellish_Welcome():
 
-  #if not player.inHistory('useSound'):
-   # return
+  
   file = getMediaPath("monk.wav")
   sound = makeSound(file) 
   start = 0
@@ -964,6 +963,16 @@ def roomsSound(player):
     setSampleValueAt(newSound,index, value)
     index = index + 1
   play (newSound)
+def TunnelExit(player):
+
+  if not player.inHistory('useSound'):
+    return
+  file = getMediaPath("Exit.wav")
+  sound = makeSound(file) 
+  for sample in getSamples(sound):
+     value = getSampleValue(sample)
+     setSampleValue(sample, value)
+  play(sound)
 def SecretRoomSound(player):
 
   if not player.inHistory('useSound'):

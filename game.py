@@ -49,7 +49,7 @@ def start(player=None):
   
   #draw
   show(map)
-  printNow("\nWhile exploring an underground crypt in Rome, you find a mysterious door. There is a plaque above the door that reads â€˜Te mors expectetâ€™.")
+  printNow("\nWhile exploring an underground crypt in Rome, you find a mysterious door. There is a plaque above the door that reads â??Te mors expectetâ??.")
   printNow("Suddenly the ground trembles and there is a cave-in behind you. Your lungs fill with rocks and dirt, it is hard to breathe.")
   printNow("Finally the cave-in ends, you look back and see nothing but rocks piled up to the ceiling and only a small space around you.")
   printNow("The mysterious door is now your only hope for survival, you must go north through the door.")
@@ -78,7 +78,7 @@ def entry(player, map):
   #draw player entry
   addOvalFilled(map, 236, 460, 5, 5, black)
   repaint(map)
-  #creakingDoor()
+  creakingDoor()
   printNow("\nYou are now in the entryway of a dark tunnel, you hear the door slam behind you, the only hope for survival lies ahead.")
   
   if not player.hasItem('torch'):
@@ -122,8 +122,8 @@ def tunnel1_front(player, map):
   #draw player front tunnel1
   addOvalFilled(map, 236, 400, 5, 5, black)
   repaint(map)
-  #Wind1()
-  #Mummy_low()
+  Wind1()
+  Mummy_low()
   printNow("\nYou are now further into the dark tunnel you feel an ominous cold wind touch your skin.")
   printNow("You smell the stench of dead bodies, you hear the sound of howling wind, and the groans of some sort of creature.")
   printNow("You may go south to retreat, north further into the tunnel, or go east into another room.")
@@ -139,7 +139,7 @@ def tunnel1_middle(player, map):
   #draw player middle tunnel1
   addOvalFilled(map, 236, 275, 5, 5, black)
   repaint(map)
-  #Wind2()
+  Wind2()
   printNow("\nGoing further into the tunnel the wind gets colder, the cold runs through you, you can feel down to your bones.")
   printNow("You may go south to retreat, go north further into the tunnel, or go west into a room.")
   
@@ -154,7 +154,7 @@ def tunnel1_end(player, map):
   #draw player end tunnel1
   addOvalFilled(map, 236, 165, 5, 5, black)
   repaint(map)
-  #Monster()
+  Monster()
   printNow("\nYou have reached a dead end, you are freezing cold, and you hear a loud awful terrifying moan.")
   printNow("You may go south back into the tunnel, or go east into a dark room.") 
   
@@ -222,7 +222,7 @@ def room1(player, map):
   
 def secret_tomb(player, map):
   validChoices = ['north', 'south']  
-  #Mummy_low()
+  Mummy_low()
   printNow("\nYou begin to walk towards the dark tomb. There is a plaque above the")
   printNow("which reads 'Locum unrested'")    #Room of the unrested 
   printNow("You step inside the dark tomb and immediately hear a loud groan.")
@@ -284,7 +284,7 @@ def room2(player, map):
   addOvalFilled(map, 340, 340, 5, 5, black)
   repaint(map)
   printNow ("You step through the stone archway which reads 'Oblitus locus'") #The forgotten room
-  printNow("\n You have entered a dark musty chamber about the size of a childâ€™s bedroom.")
+  printNow("\n You have entered a dark musty chamber about the size of a childâ??s bedroom.")
   printNow("The air is heavy and smells of rotten flesh.")
   printNow("You hear small creatures rustling around and the sound of water dripping.")
   printNow ("You have discovered a small opening in the wall. It seems to lead to some sort of passage way.")
@@ -457,7 +457,7 @@ def tunnel2_exit(player, map):
   printNow("You approach the small beam of light you saw, there appears to be a door with light shining through the edges.")
   printNow("Finally, you start to go toward the door, but suddenly a zombie appears in front of the door.")
   printNow("The zombie stinks like rotting flesh, the stench makes you want to vomit.")
-  #zombie_L3()
+  zombie_L3()
   printNow("You hear the zombie utter, 'I want your brains', you know in order to get to the door you will have to fight off the zombie.")
   choice = requestString("Did you come all this way to fail now, will you fight the zombie or run? : Type fight or run")
   
@@ -583,7 +583,7 @@ def goDirection(player, roomName, validChoices, playerChoice, map):
   elif roomName == 'secret_tomb':
     if playerChoice.lower() == "north":
       printNow(" The door slams and disappears into the wall behind you. There is no going back.")
-      #creakingDoor()
+      creakingDoor()
       room4(player, map)
     elif playerChoice.lower() == "south":
       secret_tomb(player, map)
@@ -629,7 +629,7 @@ def goDirection(player, roomName, validChoices, playerChoice, map):
         #draw player after exit at end
         addOvalFilled(map, 235, 5, 5, 5, black)
         repaint(map)
-        #creakingDoor()
+        creakingDoor()
         showInformation("Congratulations, " + player.getName() + " you have WON!!!") 
         sys.exit(o)
      
@@ -772,11 +772,11 @@ def doorGame(player, map):
   printNow("\n You approach the passage way, when suddenly a rolling grey fog begins to form in front of the opening.")
   printNow("The fog starts to cluster and take the form of a old, weathered woman. Through the fog, her face takes")
   printNow("form. Her eyes are black, void of any light. Suddenly she speaks. Her voice is soft and chilling... 'Foolish mortal, it appears you have")
-  #Heart_Beatsound_reg()
+  Heart_Beatsound_reg()
   printNow("fallen into my trap....' You begin to feel your own heart begin to beat out of your chest. 'You look")
   printNow("frightened.... good! But there is hope for you see... just answer my question and you can go free...")
   printNow("'And because I am so generous I will even help you! You can guess letters to the answer and I will tell")
-  printNow("you if youâ€™re getting close.....")
+  printNow("you if youâ??re getting close.....")
   printNow("However, if you guess more than five letter incorrectly..... well.... ha ha ha....'")
   printNow("\n 'Ready? What is the name of the room you have just entered!?!'")
   printNow(wordDashes) 
@@ -831,45 +831,44 @@ def doorGame(player, map):
        printNow("You are now allowed into the passage way....")
        passage_way(player, map)
 
-start()
-"""
+
 def creakingDoor():
-   file = "cst205Final/sounds/Creaking Door.wav" 
+   file = "C:\Users\luntsfoc\Google Drive\CSUMB\CSIT205\Modules\Code\module 7\cst205Final\sounds\Creaking Door .wav" 
    sound = makeSound(file)
    for sample in getSamples(sound):
       value  = getSampleValue(sample)
       setSampleValue(sample, value * 6 )
    play(sound)
 def Wind1():
-   file = "cst205Final/sounds/wind.wav" 
+   file = "C:\Users\luntsfoc\Google Drive\CSUMB\CSIT205\Modules\Code\module 7\cst205Final\sounds\wind.wav" 
    sound = makeSound(file)
    for sample in getSamples(sound):
       value  = getSampleValue(sample)
       setSampleValue(sample, value * 8 )
    play(sound)
 def Wind2():
-   file = "cst205Final/sounds/wind2.wav" 
+   file = "C:\Users\luntsfoc\Google Drive\CSUMB\CSIT205\Modules\Code\module 7\cst205Final\sounds\wind2.wav" 
    sound = makeSound(file)
    for sample in getSamples(sound):
      value  = getSampleValue(sample)
      setSampleValue(sample, value * 8 )
    play(sound)
 def Mummy_low():
-  file = "cst205Final/sounds/Mummy.wav" 
+  file = "C:\Users\luntsfoc\Google Drive\CSUMB\CSIT205\Modules\Code\module 7\cst205Final\sounds\Mummy.wav" 
   sound = makeSound(file)
   for sample in getSamples(sound):
      value  = getSampleValue(sample)
      setSampleValue(sample, value *0.1 )
   play(sound)
 def Monster():
-  file = "cst205Final/sounds/Monster.wav"
+  file = "C:\Users\luntsfoc\Google Drive\CSUMB\CSIT205\Modules\Code\module 7\cst205Final\sounds\Monster.wav"
   sound = makeSound(file)
   for sample in getSamples(sound):
      value  = getSampleValue(sample)
      setSampleValue(sample, value)
   play(sound)
 def zombie_L3():
-  file = "cst205Final/sounds/I Want Brains.wav"
+  file = "C:\Users\luntsfoc\Google Drive\CSUMB\CSIT205\Modules\Code\module 7\cst205Final\sounds\I Want Brains.wav"
   sound = makeSound(file)
   for sample in getSamples(sound):
      value = getSampleValue(sample)
@@ -877,11 +876,11 @@ def zombie_L3():
   play(sound)   
   
 def Heart_Beatsound_reg(): #heart beat sound
-  file = "cst205Final/sounds/heartbeat.wav"
+  file = "C:\Users\luntsfoc\Google Drive\CSUMB\CSIT205\Modules\Code\module 7\cst205Final\sounds\heartbeat.wav"
   sound = makeSound(file) 
   for sample in getSamples(sound):
      value = getSampleValue(sample)
      setSampleValue(sample, value * 20)
   play(sound)
-"""
 
+start()
